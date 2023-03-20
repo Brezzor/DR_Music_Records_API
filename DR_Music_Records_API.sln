@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DR_Music_Records_API", "DR_Music_Records_API\DR_Music_Records_API.csproj", "{F7FC5FD4-2852-4DD7-B864-6C4F4EB0828D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DR_Music_Records_APITests", "DR_Music_Records_APITests\DR_Music_Records_APITests.csproj", "{6B85E676-30BA-401A-95F4-7EAAA6E0CA6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F7FC5FD4-2852-4DD7-B864-6C4F4EB0828D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7FC5FD4-2852-4DD7-B864-6C4F4EB0828D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7FC5FD4-2852-4DD7-B864-6C4F4EB0828D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B85E676-30BA-401A-95F4-7EAAA6E0CA6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B85E676-30BA-401A-95F4-7EAAA6E0CA6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B85E676-30BA-401A-95F4-7EAAA6E0CA6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B85E676-30BA-401A-95F4-7EAAA6E0CA6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
