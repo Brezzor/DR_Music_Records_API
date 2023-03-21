@@ -1,18 +1,36 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DR_Music_Records_API.Models;
+using DR_Music_Records_API.Repositories;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace DR_Music_Records_API.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class RecordsController : ControllerBase
     {
-        // GET: api/<RecordsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly RecordRepository? _recordRepository;
+
+        public RecordsController(RecordRepository recordRepository)
         {
-            return new string[] { "value1", "value2" };
+            _recordRepository = recordRepository;
+        }
+
+        // GET: api/<RecordsController>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [HttpGet]
+        public ActionResult<IEnumerable<Record>> GetAll()
+        {
+            List<Record>? records = _recordRepository!.GetAll();
+            if (records == null || records.Count < 1)
+            {
+                return NoContent();
+            }
+            return Ok(records);
         }
 
         // GET api/<RecordsController>/5

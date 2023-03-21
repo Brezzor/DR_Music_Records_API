@@ -5,7 +5,7 @@ namespace DR_Music_Records_API.Repositories
     public class RecordRepository
     {
         private int _nextId;
-        private List<Record> _records;
+        private List<Record>? _records;
 
         public RecordRepository() 
         { 
@@ -19,6 +19,12 @@ namespace DR_Music_Records_API.Repositories
                 new Record() { Id = _nextId++, title = "Hotel California", artist = "Eagles", duration = 43, publicationYear = 1976},
                 new Record() { Id = _nextId++, title = "21", artist = "Adele", duration = 48, publicationYear = 2010}
             };
+        }
+
+        public List<Record>? GetAll() 
+        { 
+            List<Record>? records = new List<Record>(_records!);
+            return records;
         }
     }
 }
