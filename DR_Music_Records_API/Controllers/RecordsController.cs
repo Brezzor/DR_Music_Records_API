@@ -23,9 +23,13 @@ namespace DR_Music_Records_API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
-        public ActionResult<IEnumerable<Record>> GetAll()
+        public ActionResult<IEnumerable<Record>> GetAll(
+            [FromQuery] string? title, 
+            [FromQuery] string? artist, 
+            [FromQuery] int? duration, 
+            [FromQuery] int? publicationyear)
         {
-            List<Record>? records = _recordRepository!.GetAll();
+            List<Record>? records = _recordRepository!.GetAll(title, artist, duration, publicationyear);
             if (records == null || records.Count < 1)
             {
                 return NoContent();

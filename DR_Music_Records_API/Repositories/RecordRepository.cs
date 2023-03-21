@@ -21,9 +21,27 @@ namespace DR_Music_Records_API.Repositories
             };
         }
 
-        public List<Record>? GetAll() 
+        public List<Record>? GetAll(string? title, string? artist, int? duration, int? publicationYear) 
         { 
             List<Record>? records = new List<Record>(_records!);
+
+            if (title != null)
+            {
+                records = records.FindAll(rec => rec.title!.Contains(title!, StringComparison.InvariantCultureIgnoreCase));
+            }
+            if (artist != null) 
+            {
+                records = records.FindAll(rec => rec.artist!.Contains(artist!, StringComparison.InvariantCultureIgnoreCase));
+            }
+            if (duration > 0)
+            {
+                records = records.FindAll(rec => rec.duration.Equals(duration));
+            }
+            if (publicationYear > 0)
+            {
+                records = records.FindAll(rec => rec.publicationYear.Equals(publicationYear));
+            }
+
             return records;
         }
     }
