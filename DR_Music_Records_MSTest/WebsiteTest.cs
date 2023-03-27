@@ -9,7 +9,7 @@ namespace DR_Music_Records_MSTest
     public class WebsiteTest
     {
         private static readonly string DriverDirectory = "C:\\WebDrivers";
-        private readonly string _url = "https://drwebrecordssite.azurewebsites.net/?fbclid=IwAR2vzwRsvMv8p8JVdJtX-huJ0vMZKZIwzldrp-kSvVEHUfK2JUiG6KHFbYQ";
+        private readonly string _url = "https://drmusicrecordswebsite.azurewebsites.net/";
         private static IWebDriver? _driver;
 
         [ClassInitialize]
@@ -36,6 +36,22 @@ namespace DR_Music_Records_MSTest
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
             IWebElement records = wait.Until(record => record.FindElement(By.Id("getAllRecordsList")));
             Assert.IsTrue(records.Text.Contains("Thriller"));
+        }
+
+        [TestMethod]
+        public void GetAllWithFiltersTest()
+        {
+            _driver!.Navigate().GoToUrl(_url);
+
+            IWebElement inputElement = _driver.FindElement(By.Id("inputTitle"));
+            inputElement.SendKeys("21");
+
+            IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
+            buttonElement.Click();
+
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            IWebElement records = wait.Until(record => record.FindElement(By.Id("getAllRecordsList")));
+            Assert.IsTrue(records.Text.Contains("21"));
         }
     }
 }
