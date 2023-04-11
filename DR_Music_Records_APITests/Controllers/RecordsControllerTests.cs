@@ -75,6 +75,12 @@ namespace DR_Music_Records_API.Controllers.Tests
         }
 
         [TestMethod()]
+        public void PostTest()
+        {
+
+        }
+
+        [TestMethod()]
         public void PutTest()
         {
 

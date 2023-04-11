@@ -18,6 +18,7 @@ namespace DR_Music_Records_API.Repositories
                 new Record() { Id = _nextId++, title = "The Dark Side of the Moon", artist = "Pink Floyd", duration = 42, publicationYear = 1973},
                 new Record() { Id = _nextId++, title = "Hotel California", artist = "Eagles", duration = 43, publicationYear = 1976},
                 new Record() { Id = _nextId++, title = "21", artist = "Adele", duration = 48, publicationYear = 2010}
+                // Homework, Daft Punk, 74, 1997
             };
         }
 
@@ -43,6 +44,16 @@ namespace DR_Music_Records_API.Repositories
             }
 
             return records;
+        }
+
+        public Record? addRecord(Record newRecord) 
+        { 
+            if (newRecord != null) 
+            {
+                newRecord.Id = _nextId++;
+                _records!.Add(newRecord);
+            }
+            return newRecord;
         }
     }
 }

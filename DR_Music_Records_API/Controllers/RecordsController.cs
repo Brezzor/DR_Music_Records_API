@@ -12,7 +12,7 @@ namespace DR_Music_Records_API.Controllers
     [ApiController]
     public class RecordsController : ControllerBase
     {
-        private readonly RecordRepository? _recordRepository;
+        private readonly RecordRepository _recordRepository;
 
         public RecordsController(RecordRepository recordRepository)
         {
@@ -37,17 +37,19 @@ namespace DR_Music_Records_API.Controllers
             return Ok(records);
         }
 
-        // GET api/<RecordsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/<RecordsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Record> Post([FromBody] Record newRecord)
         {
+
+            Record record = _recordRepository.addRecord(newRecord)!;
+            if (record != null)
+            {
+                return Created($"api/Records/{record.Id}", record);
+            }
+            return BadRequest();
         }
 
         // PUT api/<RecordsController>/5
